@@ -317,7 +317,7 @@
                                 </li>
 
                                 <li class="{{ request()->routeIs('nilai') ? 'active' : '' }}">
-                                    <a href=""
+                                    <a href="{{ route('admin.rekap.rekap-kelas') }}"
                                         class="inline-flex w-full items-center p-2 text-sm font-normal hover:bg-neutral/10">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24"
                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

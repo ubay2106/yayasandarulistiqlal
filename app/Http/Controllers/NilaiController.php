@@ -8,6 +8,9 @@ use App\Models\Pengajar;
 use App\Models\Siswa;
 use App\Models\PenilaianHarian;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\DB;
+use App\Models\Kelas;
+use App\Models\MataPelajaran;
 
 class NilaiController extends Controller
 {
@@ -141,5 +144,43 @@ class NilaiController extends Controller
         $penilaian->delete();
 
         return back()->with('success', 'Nilai berhasil dihapus');
+    }
+
+    public function rekapKelas()
+    {
+        $kelas = Kelas::withCount('siswa')
+            ->withCount([
+                'pengajar as mapel_count' => function ($q) {
+                    $q->select(DB::raw('COUNT(DISTINCT mapel_id)'));
+                },
+            ])
+            ->get();
+
+        return view('admin.rekap.rekap-kelas', compact('kelas'));
+    }
+
+    public function rekapMapel($kelasId)
+    {
+        $kelas = Kelas::findOrFail($kelasId);
+
+        $mapel = Pengajar::with(['mapel', 'guru'])
+            ->where('kelas_id', $kelasId)
+            ->get();
+
+        return view('admin.rekap.rekap-mapel', compact('kelas', 'mapel'));
+    }
+
+    public function rekapNilai($pengajarId)
+    {
+        $pengajar = Pengajar::with(['kelas', 'mapel'])->findOrFail($pengajarId);
+
+        $siswa = Siswa::where('kelas_id', $pengajar->kelas_id)->get();
+
+        $nilai = PenilaianHarian::where('kelas_id', $pengajar->kelas_id)
+            ->where('mapel_id', $pengajar->mapel_id)
+            ->get()
+            ->groupBy(['siswa_id', 'jenis_nilai']);
+
+        return view('admin.rekap.nilai', compact('pengajar', 'siswa', 'nilai'));
     }
 }

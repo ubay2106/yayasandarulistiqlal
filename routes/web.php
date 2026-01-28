@@ -36,6 +36,9 @@ Route::middleware(['auth', 'role:admin'])
         Route::resource('kelas', KelasController::class);
         Route::resource('mapel', MataPelajaranController::class);
         Route::resource('pengajar', PengajarController::class);
+        Route::get('/rekap-kelas', [NilaiController::class, 'rekapKelas'])->name('rekap.rekap-kelas');
+        Route::get('/rekap-kelas/{kelas}/rekap-mapel', [NilaiController::class, 'rekapMapel'])->name('rekap.rekap-mapel');
+        Route::get('/rekap-mapel/{pengajar}/nilai', [NilaiController::class, 'rekapNilai'])->name('rekap.nilai');
     });
 
 Route::middleware(['auth', 'role:guru'])
