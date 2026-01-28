@@ -81,17 +81,20 @@
 </head>
 
 <body>
-
-    <div id="global-loading" class="fixed inset-0 z-[99999] hidden items-center justify-center bg-black/50">
-        <div class="flex flex-col items-center gap-3">
-            <span class="loading loading-spinner loading-lg text-primary"></span>
-            <p class="text-sm text-white">Memuat...</p>
-        </div>
-    </div>
-
     <!-- Layout wrapper -->
     <div class="bg-base-200 flex min-h-screen flex-col">
-        <!-- Layout Navbar -->
+        @php
+            $dataMasterActive = request()->routeIs(
+                'admin.siswa.*',
+                'admin.guru.*',
+                'admin.kelas.*',
+                'admin.mapel.*',
+                'admin.pengajar.*',
+            );
+            $penilaianActive = request()->routeIs(
+                'guru.nilai.*',
+            );
+        @endphp
 
         <!-- ---------- HEADER ---------- -->
         <div class="bg-base-100 border-base-content/20 lg:ps-75 sticky top-0 z-50 flex border-b">
@@ -247,9 +250,9 @@
                         @role('admin')
                             <ul class="accordion menu menu-sm gap-1 p-3">
                                 <!-- Accordion Menu Item (Level 0) -->
-                                <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                                <li>
                                     <a href="{{ route('admin.dashboard') }}"
-                                        class="inline-flex w-full items-center p-2 text-sm font-normal hover:bg-neutral/10">
+                                        class="inline-flex w-full items-center p-2 text-sm font-normal hover:bg-neutral/10 {{ request()->routeIs('admin.dashboard') ? 'menu-active' : '' }}">
                                         <span class="icon-[tabler--dashboard] size-4.5"></span>
                                         <span class="ms-2 grow">Dashboard</span>
                                     </a>
@@ -257,8 +260,8 @@
 
                                 <li class="accordion-item" id="">
                                     <button
-                                        class="accordion-toggle accordion-item-active:bg-neutral/10 inline-flex w-full items-center p-2 text-start text-sm font-normal"
-                                        aria-controls="account-settings-collapse-account-settings" aria-expanded="true">
+                                        class="accordion-toggle inline-flex w-full items-center p-2 text-start text-sm font-normal"
+                                        aria-expanded="true">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24"
                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                             stroke-linejoin="round">
@@ -274,13 +277,13 @@
                                             class="icon-[tabler--chevron-right] accordion-item-active:rotate-90 size-4.5 shrink-0 transition-transform duration-300 rtl:rotate-180"></span>
                                     </button>
                                     <div id="account-settings-collapse-account-settings"
-                                        class="accordion-content mt-1 hidden w-full overflow-hidden transition-[height] duration-300"
+                                        class="accordion-content mt-1 w-full overflow-hidden transition-[height] duration-300 {{ $dataMasterActive ? '' : 'hidden' }}"
                                         aria-labelledby="" role="region">
                                         <ul class="space-y-1">
                                             <!-- Simple Link Item (for nested items) -->
                                             <li>
                                                 <a href="{{ route('admin.siswa.index') }}"
-                                                    class="inline-flex w-full items-center px-2">
+                                                    class="inline-flex w-full items-center px-2 {{ request()->routeIs('admin.siswa.*') ? 'menu-active' : '' }}">
                                                     <span>Data Siswa</span>
                                                 </a>
                                             </li>
@@ -288,7 +291,7 @@
                                             <!-- Simple Link Item (for nested items) -->
                                             <li>
                                                 <a href="{{ route('admin.guru.index') }}"
-                                                    class="inline-flex w-full items-center px-2">
+                                                    class="inline-flex w-full items-center px-2 {{ request()->routeIs('admin.guru.*') ? 'menu-active' : '' }}">
                                                     <span>Data Guru</span>
                                                 </a>
                                             </li>
@@ -296,19 +299,19 @@
                                             <!-- Simple Link Item (for nested items) -->
                                             <li>
                                                 <a href="{{ route('admin.kelas.index') }}"
-                                                    class="inline-flex w-full items-center px-2">
+                                                    class="inline-flex w-full items-center px-2 {{ request()->routeIs('admin.kelas.*') ? 'menu-active' : '' }}">
                                                     <span>Data Kelas</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="{{ route('admin.mapel.index') }}"
-                                                    class="inline-flex w-full items-center px-2">
+                                                    class="inline-flex w-full items-center px-2 {{ request()->routeIs('admin.mapel.*') ? 'menu-active' : '' }}">
                                                     <span>Data Mapel</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="{{ route('admin.pengajar.index') }}"
-                                                    class="inline-flex w-full items-center px-2">
+                                                    class="inline-flex w-full items-center px-2 {{ request()->routeIs('admin.pengajar.*') ? 'menu-active' : '' }}">
                                                     <span>Data Pengajar</span>
                                                 </a>
                                             </li>
@@ -316,9 +319,9 @@
                                     </div>
                                 </li>
 
-                                <li class="{{ request()->routeIs('nilai') ? 'active' : '' }}">
+                                <li>
                                     <a href="{{ route('admin.rekap.rekap-kelas') }}"
-                                        class="inline-flex w-full items-center p-2 text-sm font-normal hover:bg-neutral/10">
+                                        class="inline-flex w-full items-center p-2 text-sm font-normal hover:bg-neutral/10 {{ request()->routeIs('admin.rekap.*') ? 'menu-active' : '' }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24"
                                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                             stroke-linejoin="round">
@@ -360,30 +363,30 @@
                         @role('guru')
                             <ul class="accordion menu menu-sm gap-1 p-3">
                                 <!-- Accordion Menu Item (Level 0) -->
-                                <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                                <li>
                                     <a href="{{ route('guru.dashboard') }}"
-                                        class="inline-flex w-full items-center p-2 text-sm font-normal hover:bg-neutral/10">
+                                        class="inline-flex w-full items-center p-2 text-sm font-normal hover:bg-neutral/10 {{ request()->routeIs('guru.dashboard') ? 'menu-active' : '' }}">
                                         <span class="icon-[tabler--dashboard] size-4.5"></span>
                                         <span class="ms-2 grow">Dashboard</span>
                                     </a>
                                 </li>
                                 <li class="accordion-item" id="">
                                     <button
-                                        class="accordion-toggle accordion-item-active:bg-neutral/10 inline-flex w-full items-center p-2 text-start text-sm font-normal"
-                                        aria-controls="account-settings-collapse-account-settings" aria-expanded="true">
+                                        class="accordion-toggle inline-flex w-full items-center p-2 text-start text-sm font-normal"
+                                        aria-expanded="true">
                                         <span class="icon-[tabler--chart-bar] size-4.5"></span>
                                         <span class="grow">Penilaian</span>
                                         <span
                                             class="icon-[tabler--chevron-right] accordion-item-active:rotate-90 size-4.5 shrink-0 transition-transform duration-300 rtl:rotate-180"></span>
                                     </button>
                                     <div id="account-settings-collapse-account-settings"
-                                        class="accordion-content mt-1 hidden w-full overflow-hidden transition-[height] duration-300"
+                                        class="accordion-content mt-1 w-full overflow-hidden transition-[height] duration-300 {{ $penilaianActive ? '' : 'hidden' }}"
                                         aria-labelledby="" role="region">
                                         <ul class="space-y-1">
                                             <!-- Simple Link Item (for nested items) -->
                                             <li>
                                                 <a href="{{ route('guru.nilai.index') }}"
-                                                    class="inline-flex w-full items-center px-2">
+                                                    class="inline-flex w-full items-center px-2 {{ request()->routeIs('guru.nilai.index') ? 'menu-active' : '' }}">
                                                     <span>Input Nilai</span>
                                                 </a>
                                             </li>
@@ -391,7 +394,7 @@
                                             <!-- Simple Link Item (for nested items) -->
                                             <li>
                                                 <a href="{{ route('guru.nilai.rekap') }}"
-                                                    class="inline-flex w-full items-center px-2">
+                                                    class="inline-flex w-full items-center px-2 {{ request()->routeIs('guru.nilai.rekap') ? 'menu-active' : '' }}">
                                                     <span>Rekap Nilai</span>
                                                 </a>
                                             </li>
@@ -443,48 +446,6 @@
             });
         </script>
     @endif
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const loading = document.getElementById('global-loading');
-
-            // 🔥 SHOW LOADING FUNCTION
-            function showLoading() {
-                loading.classList.remove('hidden');
-                loading.classList.add('flex');
-            }
-
-            // 🔹 FORM SUBMIT
-            document.querySelectorAll('form').forEach(form => {
-                form.addEventListener('submit', () => {
-                    showLoading();
-                });
-            });
-
-            // 🔹 LINK CLICK (KECUALI ANCHOR & JS)
-            document.querySelectorAll('a[href]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-
-                    if (
-                        href.startsWith('#') ||
-                        href === '' ||
-                        this.target === '_blank' ||
-                        this.hasAttribute('data-no-loading')
-                    ) {
-                        return;
-                    }
-
-                    showLoading();
-                });
-            });
-
-            // 🔹 AUTO HIDE AFTER LOAD
-            window.addEventListener('pageshow', () => {
-                loading.classList.add('hidden');
-                loading.classList.remove('flex');
-            });
-        });
-    </script>
 
     @if ($errors->any())
         <script>

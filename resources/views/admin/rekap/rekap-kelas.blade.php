@@ -3,6 +3,7 @@
     <div class="lg:ps-75 flex grow flex-col">
         <main class="mx-auto w-full max-w-7xl flex-1 p-4 sm:p-6 lg:p-8">
             <h2 class="text-xl font-semibold mb-4">Rekap Nilai Perkelas</h2>
+
             <div class="rounded-box shadow-base-300/10 bg-base-100 w-full pb-2 shadow-md">
                 <div class="overflow-x-auto">
                     <table class="table table-zebra">

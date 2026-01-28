@@ -9,6 +9,38 @@
                     Kembali
                 </a>
             </div>
+            <div class="flex items-center justify-between mb-4">
+                <form method="GET" action="{{ route('admin.rekap.rekap-kelas.export', $kelas->id) }}"
+                    class="flex flex-wrap items-end gap-3">
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text text-sm">Semester</span>
+                        </label>
+
+                        @if ($semesterList->isEmpty())
+                            <select class="select select-bordered select-sm w-48" disabled>
+                                <option>Belum ada nilai</option>
+                            </select>
+                        @else
+                            <select name="semester" class="select select-bordered select-sm w-48">
+                                <option value="">Semua Semester</option>
+                                @foreach ($semesterList as $s)
+                                    <option value="{{ $s['value'] }}">
+                                        {{ $s['label'] }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        @endif
+
+                    </div>
+
+                    <button type="submit" class="btn btn-sm btn-success">
+                        Export Excel
+                    </button>
+                </form>
+
+            </div>
             <div class="rounded-box shadow-base-300/10 bg-base-100 w-full pb-2 shadow-md">
                 <div class="overflow-x-auto">
                     <table class="table table-zebra">

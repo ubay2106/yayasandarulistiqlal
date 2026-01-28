@@ -5,9 +5,23 @@
             <div class="flex items-center justify-between mb-4">
                 <h2 class="text-xl font-semibold">Rekap Nilai Perkelas</h2>
 
-                <a href="{{ url()->previous() }}" class="btn btn-sm btn-outline">
+                <a href="{{ route('admin.rekap.rekap-kelas') }}" class="btn btn-sm btn-outline">
                     Kembali
                 </a>
+            </div>
+            <div class="flex items-center mb-4">
+                <form method="GET" id="filter-form" class="flex gap-2">
+                    <select name="semester" class="select select-bordered" onchange="this.form.submit()">
+                        <option value="">Semua Semester</option>
+
+                        @foreach ($semesterList as $s)
+                            <option value="{{ $s['value'] }}" @selected(request('semester') == $s['value'])>
+                                {{ $s['label'] }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                </form>
             </div>
             <div class="rounded-box shadow-base-300/10 bg-base-100 w-full pb-2 shadow-md">
                 <div class="overflow-x-auto">

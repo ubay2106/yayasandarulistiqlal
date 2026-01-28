@@ -39,6 +39,7 @@ Route::middleware(['auth', 'role:admin'])
         Route::get('/rekap-kelas', [NilaiController::class, 'rekapKelas'])->name('rekap.rekap-kelas');
         Route::get('/rekap-kelas/{kelas}/rekap-mapel', [NilaiController::class, 'rekapMapel'])->name('rekap.rekap-mapel');
         Route::get('/rekap-mapel/{pengajar}/nilai', [NilaiController::class, 'rekapNilai'])->name('rekap.nilai');
+        Route::get('/rekap/rekap-kelas/{kelas}/export', [NilaiController::class, 'exportPerKelas'])->name('rekap.rekap-kelas.export');
     });
 
 Route::middleware(['auth', 'role:guru'])

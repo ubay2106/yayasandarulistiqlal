@@ -25,4 +25,6 @@ class AppServiceProvider extends ServiceProvider
             return Auth::check() && Auth::user()->role === $role;
         });
     }
+
+    
 }

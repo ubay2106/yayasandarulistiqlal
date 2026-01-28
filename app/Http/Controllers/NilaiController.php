@@ -11,6 +11,9 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use App\Models\Kelas;
 use App\Models\MataPelajaran;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class NilaiController extends Controller
 {
@@ -167,20 +170,141 @@ class NilaiController extends Controller
             ->where('kelas_id', $kelasId)
             ->get();
 
-        return view('admin.rekap.rekap-mapel', compact('kelas', 'mapel'));
+        $semesterList = PenilaianHarian::where('kelas_id', $kelas->id)
+            ->selectRaw(
+                "
+        YEAR(tanggal) as tahun,
+        CASE
+            WHEN MONTH(tanggal) <= 6 THEN 2
+            ELSE 1
+        END as semester
+    ",
+            )
+            ->distinct()
+            ->orderBy('tahun', 'desc')
+            ->orderBy('semester')
+            ->get()
+            ->map(
+                fn($item) => [
+                    'value' => $item->tahun . '-' . $item->semester,
+                    'label' => 'Semester ' . $item->semester . ' - ' . $item->tahun,
+                ],
+            );
+
+        return view('admin.rekap.rekap-mapel', compact('kelas', 'semesterList', 'mapel'));
     }
 
-    public function rekapNilai($pengajarId)
+    public function rekapNilai(Request $request, $pengajarId)
     {
         $pengajar = Pengajar::with(['kelas', 'mapel'])->findOrFail($pengajarId);
 
         $siswa = Siswa::where('kelas_id', $pengajar->kelas_id)->get();
 
-        $nilai = PenilaianHarian::where('kelas_id', $pengajar->kelas_id)
-            ->where('mapel_id', $pengajar->mapel_id)
-            ->get()
-            ->groupBy(['siswa_id', 'jenis_nilai']);
+        $query = PenilaianHarian::where('kelas_id', $pengajar->kelas_id)->where('mapel_id', $pengajar->mapel_id);
 
-        return view('admin.rekap.nilai', compact('pengajar', 'siswa', 'nilai'));
+        $semesterList = PenilaianHarian::selectRaw(
+            "
+        YEAR(tanggal) as tahun,
+        CASE
+            WHEN MONTH(tanggal) <= 6 THEN 2
+            ELSE 1
+        END as semester
+    ",
+        )
+            ->where('kelas_id', $pengajar->kelas_id)
+            ->where('mapel_id', $pengajar->mapel_id)
+            ->groupBy('tahun', 'semester')
+            ->orderBy('tahun', 'desc')
+            ->orderBy('semester')
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'value' => $item->tahun . '-' . $item->semester,
+                    'label' => 'Semester ' . $item->semester . ' - ' . $item->tahun,
+                ];
+            });
+
+        $semesterInput = request('semester');
+
+        if ($semesterInput && str_contains($semesterInput, '-')) {
+            [$tahun, $semester] = explode('-', $semesterInput);
+
+            if ($semester == 1) {
+                $query->whereBetween('tanggal', ["$tahun-07-01", "$tahun-12-31"]);
+            } elseif ($semester == 2) {
+                $query->whereBetween('tanggal', ["$tahun-01-01", "$tahun-06-30"]);
+            }
+        }
+
+        $nilai = $query->get()->groupBy(['siswa_id', 'jenis_nilai']);
+
+        return view('admin.rekap.nilai', compact('pengajar', 'siswa', 'semesterList', 'nilai'));
+    }
+
+    public function exportPerKelas(Request $request, Kelas $kelas)
+    {
+
+        $semester = $request->semester;
+
+        $query = PenilaianHarian::with(['siswa', 'mapel'])->where('kelas_id', $kelas->id);
+
+        if ($semester) {
+            [$tahun, $smt] = explode('-', $semester);
+
+            if ($smt == 2) {
+                $tanggalAwal = "{$tahun}-01-01";
+                $tanggalAkhir = "{$tahun}-06-30";
+            } else {
+                $tanggalAwal = "{$tahun}-07-01";
+                $tanggalAkhir = "{$tahun}-12-31";
+            }
+
+            $query->whereBetween('tanggal', [$tanggalAwal, $tanggalAkhir]);
+        }
+
+        $nilai = $query->get();
+
+        $data = [];
+        foreach ($nilai as $n) {
+            $sid = $n->siswa_id;
+            $mid = $n->mapel_id;
+
+            $data[$sid]['siswa'] = $n->siswa;
+            $data[$sid]['mapel'][$mid]['nama'] = $n->mapel->nama_mapel;
+            $data[$sid]['mapel'][$mid][$n->jenis_nilai] = $n->nilai;
+        }
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        $sheet->fromArray([['No', 'NIS', 'Nama Siswa', 'Mata Pelajaran', 'Harian', 'UTS', 'UAS', 'Rata-rata']]);
+
+        $row = 2;
+        $no = 1;
+
+        foreach ($data as $item) {
+            foreach ($item['mapel'] as $mapel) {
+                $harian = $mapel['harian'] ?? null;
+                $uts = $mapel['uts'] ?? null;
+                $uas = $mapel['uas'] ?? null;
+
+                $nilaiArr = array_filter([$harian, $uts, $uas]);
+                $rata = count($nilaiArr) ? array_sum($nilaiArr) / count($nilaiArr) : null;
+
+                $sheet->fromArray([$no++, $item['siswa']->nis, $item['siswa']->nama_siswa, $mapel['nama'], $harian, $uts, $uas, $rata ? round($rata, 2) : '-'], null, "A{$row}");
+
+                $row++;
+            }
+        }
+
+        $writer = new Xlsx($spreadsheet);
+
+        $namaSemester = $semester ? str_replace('-', '_', $semester) : 'SEMUA';
+
+        return new StreamedResponse(fn() => $writer->save('php://output'), 200, [
+            'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'Content-Disposition' => "attachment; filename=Rekap_Kelas_{$kelas->nama_kelas}_{$namaSemester}.xlsx",
+            'Cache-Control' => 'max-age=0',
+        ]);
     }
 }
