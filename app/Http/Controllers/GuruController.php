@@ -35,7 +35,6 @@ class GuruController extends Controller
                 'nama_guru' => 'required|string|max:100',
                 'tanggal_lahir' => 'nullable|date',
 
-                // 🔥 HANYA FOTO HASIL CROP
                 'foto_cropped' => 'required|string',
 
                 'username' => 'required|unique:users,username',

@@ -257,7 +257,13 @@
                                         <span class="ms-2 grow">Dashboard</span>
                                     </a>
                                 </li>
-
+                                <li>
+                                    <a href="{{ route('admin.berita.index') }}"
+                                        class="inline-flex w-full items-center p-2 text-sm font-normal hover:bg-neutral/10 {{ request()->routeIs('admin.berita.index') ? 'menu-active' : '' }}">
+                                        <span class="icon-[tabler--dashboard] size-4.5"></span>
+                                        <span class="ms-2 grow">Berita</span>
+                                    </a>
+                                </li>
                                 <li class="accordion-item" id="">
                                     <button
                                         class="accordion-toggle inline-flex w-full items-center p-2 text-start text-sm font-normal"

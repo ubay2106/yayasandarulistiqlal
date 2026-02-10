@@ -14,7 +14,7 @@
                         <option value="">Semua Mapel</option>
                         @foreach ($pengajar as $p)
                             <option value="{{ $p->id }}" @selected(request('pengajar_id') == $p->id)>
-                                {{ $p->mapel->nama_mapel }} - {{ $p->kelas->nama_kelas }}
+                                {{ $p->mapel->nama_mapel }} - Kelas {{ $p->kelas->nama_kelas }}
                             </option>
                         @endforeach
                     </select>
@@ -45,14 +45,19 @@
                         </div>
                     </div>
                 @else
-                    {{-- CARD BERISI NILAI --}}
                     @foreach ($rekap as $tanggal => $jenis)
                         @foreach ($jenis as $tipe => $nilai)
                             <div class="card bg-base-100 shadow">
                                 <div class="card-body">
+                                    @php
+                                        $first = $nilai->first();
+                                    @endphp
                                     <h3 class="font-semibold">
                                         {{ Carbon::parse($tanggal)->translatedFormat('d F Y') }}
                                         - {{ strtoupper($tipe) }}
+                                        <span class="block text-sm font-normal text-base-content/70 mt-1">
+                                            {{ $first->mapel->nama_mapel }} - Kelas {{ $first->kelas->nama_kelas }}
+                                        </span>
                                     </h3>
 
                                     <table class="table table-zebra">

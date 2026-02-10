@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\KelasController;
@@ -11,10 +12,16 @@ use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PengajarController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Berita;
 
 Route::get('/', function () {
-    return view('welcome');
+    $berita = Berita::where('status', 'publish')
+        ->latest()
+        ->take(3)
+        ->get();
+    return view('welcome', compact('berita'));
 });
+Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
@@ -31,6 +38,7 @@ Route::middleware(['auth', 'role:admin'])
     ->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+        Route::resource('berita', BeritaController::class);
         Route::resource('siswa', SiswaController::class);
         Route::resource('guru', GuruController::class);
         Route::resource('kelas', KelasController::class);

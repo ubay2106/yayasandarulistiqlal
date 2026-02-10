@@ -29,20 +29,19 @@ class PengajarController extends Controller
             'kelas_id' => 'required',
         ]);
 
-        // Cegah duplikasi (guru-mapel-kelas sama)
-        $exists = Pengajar::where([
-            'guru_id' => $request->guru_id,
-            'mapel_id' => $request->mapel_id,
-            'kelas_id' => $request->kelas_id,
-        ])->exists();
+        try {
+            Pengajar::create($request->only('guru_id', 'mapel_id', 'kelas_id'));
+        } catch (QueryException $e) {
+            if ($e->getCode() === '23000') {
+                return back()
+                    ->withErrors([
+                        'pengajar' => 'Guru sudah terdaftar mengajar mapel ini di kelas tersebut',
+                    ])
+                    ->withInput();
+            }
 
-        if ($exists) {
-            return back()->withErrors([
-                'pengajar' => 'Pengajar dengan kombinasi ini sudah ada',
-            ]);
+            throw $e;
         }
-
-        Pengajar::create($request->only('guru_id', 'mapel_id', 'kelas_id'));
 
         return back()->with('success', 'Pengajar berhasil ditambahkan');
     }
