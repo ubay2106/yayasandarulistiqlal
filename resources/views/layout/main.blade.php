@@ -163,7 +163,6 @@
                             <a href="" class="hover:text-primary nav-link">Berita</a>
                             <a href="#" class="hover:text-primary nav-link">Prestasi</a>
                             <a href="#" class="hover:text-primary nav-link">Galeri</a>
-                            <a href="#" class="hover:text-primary nav-link">About Us</a>
                         </div>
                     </div>
                     <div class="navbar-end max-lg:hidden">
