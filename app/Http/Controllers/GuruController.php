@@ -178,4 +178,10 @@ class GuruController extends Controller
             ]);
         }
     }
+
+    public function show(Guru $guru)
+    {
+        $guru->load(['waliKelas', 'pengajar.mapel', 'pengajar.kelas']);
+        return view('page.guru-show', compact('guru'));
+    }
 }

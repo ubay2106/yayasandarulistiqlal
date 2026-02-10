@@ -13,15 +13,18 @@ use App\Http\Controllers\PengajarController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Berita;
+use App\Models\Guru;
 
 Route::get('/', function () {
     $berita = Berita::where('status', 'publish')
         ->latest()
-        ->take(3)
         ->get();
-    return view('welcome', compact('berita'));
+
+    $guru = Guru::latest()->take(6)->get();
+    return view('welcome', compact('berita', 'guru'));
 });
 Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
+Route::get('/guru/{guru}', [GuruController::class, 'show'])->name('page.guru-show');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
@@ -38,7 +41,7 @@ Route::middleware(['auth', 'role:admin'])
     ->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::resource('berita', BeritaController::class);
+        Route::resource('berita', BeritaController::class)->except(['show']);
         Route::resource('siswa', SiswaController::class);
         Route::resource('guru', GuruController::class);
         Route::resource('kelas', KelasController::class);

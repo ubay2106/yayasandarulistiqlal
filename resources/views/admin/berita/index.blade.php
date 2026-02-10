@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <span class="text-sm text-base-content/70">Filter Kelas:</span>
+                    <span class="text-sm text-base-content/70">Filter Berita:</span>
                     <select class="select select-sm select-bordered w-140px">
                         <option>Semua</option>
                         <option>1</option>
@@ -35,6 +35,7 @@
                                     <th>Judul</th>
                                     <th>Status</th>
                                     <th>Tanggal</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,6 +44,23 @@
                                         <td>{{ $b->judul }}</td>
                                         <td>{{ $b->status }}</td>
                                         <td>{{ $b->created_at->format('d-m-Y') }}</td>
+                                        <td class="flex gap-1">
+                                            <a href="{{ route('admin.berita.edit', $b->id) }}"
+                                                class="btn btn-circle btn-text btn-sm" title="Edit">
+                                                <span class="icon-[tabler--pencil] size-5"></span>
+                                            </a>
+
+                                            <form action="{{ route('admin.berita.destroy', $b->id) }}" method="POST"
+                                                id="hapus-{{ $b->id }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="button" onclick="hapus({{ $b->id }})"
+                                                    class="btn btn-circle btn-text btn-sm" title="Hapus">
+                                                    <span class="icon-[tabler--trash] size-5"></span>
+                                                </button>
+                                            </form>
+                                        </td>
+
                                     </tr>
                                 @endforeach
                             </tbody>

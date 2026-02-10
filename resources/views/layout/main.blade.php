@@ -84,7 +84,7 @@
 
     <div class="bg-base-100">
         <!-- Navbar -->
-        <header class="border-base-content/20 bg-base-100 py-px fixed top-0 z-10 w-full border-b">
+        <header id="site-header" class="border-base-content/20 bg-base-100 py-px fixed top-0 z-10 w-full border-b">
             <nav class="navbar mx-auto max-w-7xl rounded-b-xl px-4 sm:px-6 lg:px-8">
                 <div class="w-full lg:flex lg:items-center lg:gap-2">
                     <div class="navbar-start items-center justify-between max-lg:w-full">
@@ -111,7 +111,6 @@
                             @endguest
 
                             @auth
-                                {{-- SUDAH LOGIN --}}
                                 <a href="
                             @if (auth()->user()->role === 'admin') {{ route('admin.dashboard') }}
                             @elseif(auth()->user()->role === 'guru') {{ route('guru.dashboard') }}
@@ -149,18 +148,21 @@
                                 </summary>
                                 <div
                                     class="mt-2 flex flex-col gap-1 lg:absolute lg:left-0 lg:top-full lg:z-50 lg:min-w-[160px] lg:rounded-lg lg:bg-base-100 lg:shadow-lg lg:mt-2">
-                                    <a href="" class="px-4 py-2 hover:text-primary lg:hover:bg-base-200 rounded whitespace-nowrap">
+                                    <a href=""
+                                        class="px-4 py-2 hover:text-primary lg:hover:bg-base-200 rounded whitespace-nowrap">
                                         RA Darussalam
                                     </a>
-                                    <a href="" class="px-4 py-2 hover:text-primary lg:hover:bg-base-200 rounded whitespace-nowrap">
+                                    <a href=""
+                                        class="px-4 py-2 hover:text-primary lg:hover:bg-base-200 rounded whitespace-nowrap">
                                         MI Darussalam
                                     </a>
-                                    <a href="" class="px-4 py-2 hover:text-primary lg:hover:bg-base-200 rounded whitespace-nowrap">
+                                    <a href=""
+                                        class="px-4 py-2 hover:text-primary lg:hover:bg-base-200 rounded whitespace-nowrap">
                                         MTs Darussalam
                                     </a>
                                 </div>
                             </details>
-                            <a href="" class="hover:text-primary nav-link">Berita</a>
+                            <a href="#berita" class="hover:text-primary nav-link">Berita</a>
                             <a href="#" class="hover:text-primary nav-link">Prestasi</a>
                             <a href="#" class="hover:text-primary nav-link">Galeri</a>
                         </div>
@@ -168,7 +170,6 @@
                     <div class="navbar-end max-lg:hidden">
 
                         @guest
-                            {{-- BELUM LOGIN --}}
                             <a href="{{ route('login') }}" class="btn btn-primary">
                                 Login
                             </a>
@@ -194,23 +195,24 @@
             </nav>
         </header>
 
-        @yield('content')
+        <div id="page-content">
+            @yield('content')
+        </div>
 
         <footer>
             <div class="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
-                <div class="flex items-center justify-center gap-3 max-md:flex-col">
-                        <a href="https://discord.com/invite/kBHkY7DekX" target="_blank" rel="noopener noreferrer"
-                            aria-label="Discord">
-                            <span class="icon-[tabler--brand-discord] size-5"></span>
-                        </a>
-                        <a href="https://x.com/flyonui" target="_blank" rel="noopener noreferrer"
-                            aria-label="Twitter">
-                            <span class="icon-[tabler--brand-x] size-5"></span>
-                        </a>
-                        <a href="https://github.com/themeselection/flyonui" target="_blank" rel="noopener noreferrer"
-                            aria-label="Github">
-                            <span class="icon-[tabler--brand-github] size-5"></span>
-                        </a>
+                <div class="flex items-center justify-center gap-3">
+                    <a href="https://discord.com/invite/kBHkY7DekX" target="_blank" rel="noopener noreferrer"
+                        aria-label="Discord">
+                        <span class="icon-[tabler--brand-discord] size-5"></span>
+                    </a>
+                    <a href="https://x.com/flyonui" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                        <span class="icon-[tabler--brand-x] size-5"></span>
+                    </a>
+                    <a href="https://github.com/themeselection/flyonui" target="_blank" rel="noopener noreferrer"
+                        aria-label="Github">
+                        <span class="icon-[tabler--brand-github] size-5"></span>
+                    </a>
                 </div>
             </div>
 
@@ -219,10 +221,8 @@
             <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
                 <div class="text-base-content text-center text-base">
                     &copy;2026
-                    <a href="" class="text-primary">DARUSSALAM</a>
-                    ,
+                    <a href="" class="text-primary">Yayasan Darul Istiqlal</a>
                     <br class="md:hidden" />
-                    Made With Masby
                 </div>
             </div>
         </footer>
@@ -243,6 +243,27 @@
 
     <!-- Page JS -->
     <script src="../assets/dist/js/landing-page-free.js"></script>
+    <script>
+        function offsetContentByHeader() {
+            const header = document.getElementById('site-header');
+            const content = document.getElementById('page-content');
+
+            if (!header || !content) return;
+
+            const height = header.offsetHeight;
+            content.style.paddingTop = height + 'px';
+        }
+
+        window.addEventListener('load', offsetContentByHeader);
+        window.addEventListener('resize', offsetContentByHeader);
+
+        // kalau navbar collapse terbuka/tutup
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('[data-collapse]')) {
+                setTimeout(offsetContentByHeader, 300);
+            }
+        });
+    </script>
 
     <button id="scrollToTopBtn"
         class="btn btn-circle btn-soft btn-secondary/20 bottom-15 end-15 motion-preset-slide-right motion-duration-800 motion-delay-100 absolute z-3 hidden"

@@ -1,10 +1,9 @@
 @extends('layout.main')
 @section('content')
     <main>
-        <!-- Hero section -->
         <section id="home">
             <div
-                class="gap-18 md:pt-45 lg:gap-35 lg:pt-47.5 flex flex-col justify-between bg-[url('../../img/free-layer-blur.png')] bg-cover bg-center bg-no-repeat py-8 pt-40 sm:py-16 md:gap-24 lg:py-24">
+                class="gap-18 md:pt-45 flex flex-col justify-between bg-[url('../../img/free-layer-blur.png')] bg-cover bg-center bg-no-repeat py-8 sm:py-16 md:gap-24 lg:py-24">
                 <div
                     class="mx-auto flex max-w-7xl flex-col items-center gap-6 justify-self-center px-4 text-center sm:px-6 lg:px-8">
                     <h1
@@ -26,24 +25,18 @@
                             </defs>
                         </svg>
                     </h1>
-                    <p class="text-base-content/80 max-w-3xl">Welcome to a dining experience where flavor,
-                        freshness, and hospitality come together. Whether it's your first visit or your hundredth,
-                        every plate is made to impress.</p>
-                    <a href="#" class="btn btn-primary btn-gradient btn-lg">
-                        Selengkapnya
-                    </a>
+                    <p class="text-base-content/80 max-w-3xl">Yayasan Darul Istiqlal Madrasah Darussalam merupakan lembaga dakwah berbasis pendidikan. Lebih dari setengah abad, Yayasan ini telah mempresentasikan sistem sekolah sehari penuh sebagai terobosan pendidikan bagi Indonesia</p>
                 </div>
                 <img src="{{ asset('assets/img/smp.png') }}" alt="Dishes" class="min-h-67 w-full object-cover" />
             </div>
         </section>
-        <!-- About us -->
         <section id="about-us">
             <div class="bg-base-200 py-8 sm:py-16 lg:py-24">
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div class="flex flex-col gap-12 md:gap-16 lg:gap-24">
                         <!-- Header section -->
                         <div class="space-y-4 text-center">
-                            <h2 class="text-base-content text-2xl font-semibold md:text-3xl lg:text-4xl">About Us
+                            <h2 class="text-base-content text-2xl font-semibold md:text-3xl lg:text-4xl">Tentang Kami
                             </h2>
                             <p class="text-base-content/80 text-xl">Our achievement story stands as a powerful
                                 testament to teamwork and perseverance. United, we have faced challenges, celebrated
@@ -187,17 +180,13 @@
                 </div>
             </div>
         </section>
-        <!-- Blog Component -->
-        <section id="services">
+        <section id="prestasi">
             <div class="bg-base-100 py-8 sm:py-16 lg:py-24">
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <!-- Section Header -->
                     <div class="mb-12 space-y-4 text-center sm:mb-16 lg:mb-24">
-                        <h2 class="text-base-content text-2xl font-semibold md:text-3xl lg:text-4xl">Crafting
-                            Moments, Serving You</h2>
-                        <p class="text-base-content/80 text-xl">From unforgettable flavors to seamless service,
-                            we’re here to make every meal feel special. Whether you dine in, take out, or order
-                            online we’ve got your cravings covered.</p>
+                        <h2 class="text-base-content text-2xl font-semibold md:text-3xl lg:text-4xl">Galeri Karya dan Prestasi Siswa</h2>
+                        <p class="text-base-content/80 text-xl">Menyinari Bakat dan Prestasi Siswa Kami, Melihat Karya Hebat yang Mencerminkan Potensi Terbesar Generasi Masa Depan.</p>
                     </div>
                     <!-- Blog Grid -->
                     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -259,17 +248,114 @@
                 </div>
             </div>
         </section>
-        <!-- Customer Reviews -->
+        <section id="berita">
+            <div class="bg-base-100 relative h-full py-8 sm:py-16 lg:py-24">
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <span
+                        class="intersect:motion-preset-slide-right intersect:motion-duration-800 intersect:motion-opacity-0 intersect:motion-delay-600 absolute start-[15%]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="102" height="120" viewBox="0 0 102 120"
+                            fill="none">
+                            <g opacity="0.06">
+                                <!-- Badan tanda seru -->
+                                <path
+                                    d="M54 14C60.5 14 66 19.5 66 26V68C66 74.5 60.5 80 54 80C47.5 80 42 74.5 42 68V26C42 19.5 47.5 14 54 14Z"
+                                    fill="var(--color-primary)" fill-opacity="0.5" />
+                                <!-- Titik tanda seru -->
+                                <path
+                                    d="M54 92C59.5228 92 64 96.4772 64 102C64 107.523 59.5228 112 54 112C48.4772 112 44 107.523 44 102C44 96.4772 48.4772 92 54 92Z"
+                                    fill="var(--color-primary)" />
+                            </g>
+                        </svg>
+
+                    </span>
+                    <span
+                        class="intersect:motion-preset-slide-right intersect:motion-duration-800 intersect:motion-opacity-0 intersect:motion-delay-1200 absolute end-[15%] sm:max-md:end-[5%]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="118" height="119" viewBox="0 0 118 119"
+                            fill="none">
+                            <g opacity="0.05">
+                                <path
+                                    d="M36.4391 42.706C36.2091 42.1358 33.0723 19.7058 60.7168 12.1988C79.3118 7.1492 100.433 13.8137 106.922 29.8927C111.431 41.0682 105.143 50.3678 95.1291 58.2748C91.6043 61.1299 92.769 64.3566 94.2875 68.1195L96.8646 74.5057L76.4101 80.0602L71.3941 67.6302C69.3693 62.6128 67.9605 58.4399 72.2047 53.6183C77.9718 47.1176 84.8999 44.8567 81.6326 36.7601C79.4237 31.2864 73.3964 28.6212 67.8178 30.1361C58.8925 32.5598 57.3147 40.5801 57.9297 45.854L36.4391 42.706ZM108.7 92.9284C111.6 100.113 107.624 107.645 99.6907 109.799C91.8806 111.92 83.2115 107.821 80.3124 100.637C77.3672 93.339 81.3425 85.8064 89.1526 83.6856C97.0862 81.5312 105.755 85.6303 108.7 92.9284Z"
+                                    fill="var(--color-primary)" fill-opacity="0.5" />
+                                <path d="M95.8779 81.1625L88.4385 83.2969L98.2235 108.915L105.663 106.78L95.8779 81.1625Z"
+                                    fill="var(--color-primary)" fill-opacity="0.5" />
+                                <path
+                                    d="M43.8796 40.5732C43.6495 40.003 40.5127 17.573 68.1572 10.066C86.7523 5.01639 107.874 11.6809 114.362 27.7599C118.872 38.9354 112.583 48.235 102.569 56.1421C99.0444 58.9972 100.209 62.2239 101.728 65.9868L104.305 72.3729L83.8502 77.9275L78.8342 65.4975C76.8094 60.48 75.4007 56.3072 79.6448 51.4856C85.412 44.9848 92.3401 42.724 89.0727 34.6274C86.8639 29.1537 80.8365 26.4884 75.2579 28.0033C66.3327 30.427 64.7548 38.4474 65.3699 43.7212L43.8796 40.5732ZM116.141 90.7956C119.04 97.98 115.064 105.512 107.131 107.667C99.3207 109.788 90.6516 105.689 87.7525 98.5046C84.8073 91.2062 88.7826 83.6737 96.5927 81.5528C104.527 79.3983 113.196 83.4976 116.141 90.7956Z"
+                                    fill="var(--color-primary)" />
+                                <path d="M35.8188 44.1504L43.2582 42.0161L65.2665 44.5151L57.8274 46.6493L35.8188 44.1504Z"
+                                    fill="var(--color-primary)" fill-opacity="0.4" />
+                            </g>
+                        </svg>
+                    </span>
+                    <div class="mb-12 space-y-4 text-wrap text-center sm:mb-16 lg:mb-24">
+                        <h2 class="text-base-content text-2xl font-semibold md:text-3xl lg:text-4xl">Berita Terkini</h2>
+                        <p class="text-base-content/80 text-xl">Berbagai Informasi Menarik seputar Pendidikan, Inovasi, dan Perkembangan Terbaru di Sekolah Kami.</p>
+                    </div>
+                    <div id="berita-carousel-1"
+                        data-carousel='{ "loadingClasses": "opacity-0",  "slidesQty": { "xs": 1, "md": 2, "lg": 3 } }'
+                        class="relative w-full">
+                        <div class="flex gap-1">
+                            <!-- Previous Slide -->
+                            <button
+                                class="btn btn-circle carousel-prev btn-outline btn-primary hover:bg-primary relative hover:text-white "
+                                disabled="disabled">
+                                <span class="icon-[tabler--arrow-left] size-5.5"></span>
+                            </button>
+                            <div class="carousel rounded-box">
+                                <div class="carousel-body h-full gap-12 opacity-0">
+                                    @foreach ($berita as $b)
+                                        <div class="carousel-slide m-2">
+                                            <div
+                                                class="card card-border hover:border-primary overflow-hidden h-max shadow-none">
+                                                <figure class="relative h-40 overflow-hidden bg-base-200"">
+                                                    @if ($b->gambar)
+                                                        <img src="{{ asset('storage/' . $b->gambar) }}"
+                                                            class="card-img-top">
+                                                    @endif
+                                                </figure>
+                                                <div class="card-body gap-3 p-5">
+                                                    <h3 class="text-base-content text-lg font-medium">{{ $b->judul }}
+                                                    </h3>
+                                                    <p class="text-xs text-base-content/60">
+                                                        {{ \Carbon\Carbon::parse($b->created_at)->translatedFormat('d F Y') }}
+                                                    </p>
+                                                    <div class="divider"></div>
+                                                    <div>
+                                                        <p class="line-clamp-3 text-base-content/80">
+                                                            {{ Str::limit(strip_tags($b->isi), 100) }}.</p>
+                                                    </div>
+                                                    <div class="card-action">
+                                                        <a href="{{ route('berita.show', $b->slug) }}"
+                                                            class="btn btn-primary btn-gradient">
+                                                            Baca selengkapnya
+                                                            <span
+                                                                class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <!-- Next Slide -->
+                            <button
+                                class="btn btn-circle carousel-next btn-primary btn-outline hover:bg-primary relative hover:text-white ">
+                                <span class="icon-[tabler--arrow-right] size-5.5"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div class="bg-base-200 py-8 sm:py-16 lg:py-24">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div id="multi-slide" data-carousel='{ "loadingClasses": "opacity-0", "slidesQty": { "xs": 1, "md": 2 } }'
                     class="relative flex w-full gap-12 max-lg:flex-col md:gap-16 lg:items-center lg:gap-24">
                     <div>
                         <div class="space-y-4">
-                            <h2 class="text-base-content text-2xl font-semibold md:text-3xl lg:text-4xl">Customers
-                                Feedback</h2>
-                            <p class="text-base-content/80 text-xl">From career changes to dream jobs, here's how
-                                FlyonUI helped.</p>
+                            <h2 class="text-base-content text-2xl font-semibold md:text-3xl lg:text-4xl">Guru Kami</h2>
+                            <p class="text-base-content/80 text-xl">Tenaga pendidik profesional di sekolah kami</p>
                             <div class="flex gap-4">
                                 <button
                                     class="btn btn-square btn-sm carousel-prev btn-primary carousel-disabled:opacity-100 carousel-disabled:btn-outline relative hover:text-white"
@@ -286,255 +372,59 @@
                     <div class="carousel rounded-box">
                         <div class="carousel-body gap-6 opacity-0">
                             <!-- Slide 1 -->
-                            <div class="carousel-slide">
-                                <div
-                                    class="card card-border hover:border-primary transition-border h-full shadow-none duration-300">
-                                    <!-- Star Rating -->
-                                    <div class="card-body gap-5">
-                                        <!-- User Info -->
-                                        <div class="flex items-center gap-3">
-                                            <div class="avatar">
-                                                <div class="size-10 rounded-full">
-                                                    <img src="../assets/img/avatars/7.png" alt="Craig Bator" />
+                            @foreach ($guru as $g)
+                                <div class="carousel-slide">
+                                    <div
+                                        class="card card-border hover:border-primary transition-border h-full shadow-none duration-300">
+                                        <div class="card-body gap-5">
+                                            <!-- User Info -->
+                                            <div class="flex items-center gap-3">
+                                                <div class="avatar">
+                                                    <div class="size-10 rounded-full">
+                                                        @if ($g->foto)
+                                                            <img src="{{ asset('storage/' . $g->foto) }}"
+                                                                alt="{{ $g->nama_guru }}"
+                                                                class="h-full w-full object-cover">
+                                                        @else
+                                                            <div
+                                                                class="flex h-full items-center justify-center text-base-content/40">
+                                                                <span class="icon-[tabler--user] size-10"></span>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h4 class="text-base-content font-medium">{{ $g->nama_guru }}</h4>
+                                                    <p class="text-base-content/80 text-sm">
+                                                        {{ ucfirst($g->jabatan ?? 'Guru') }}</p>
                                                 </div>
                                             </div>
-                                            <div>
-                                                <h4 class="text-base-content font-medium">Craig Bator</h4>
-                                                <p class="text-base-content/80 text-sm">Food Blogger</p>
+                                            <!-- Content -->
+                                            <p class="text-base-content/80">Chef Marilyn’s signature curry is
+                                                hands-down the best I’ve ever had. The flavors are bold and
+                                                unforgettable!”</p>
+                                            <div class="card-actions">
+                                                <a href="{{ route('page.guru-show', $g->id) }}"
+                                                    class="btn btn-primary btn-gradient">
+                                                    Read More
+                                                    <span class="icon-[tabler--arrow-right] size-4"></span>
+                                                </a>
                                             </div>
                                         </div>
-                                        <div class="flex gap-1">
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                        </div>
-                                        <!-- Content -->
-                                        <p class="text-base-content/80">Chef Marilyn’s signature curry is
-                                            hands-down the best I’ve ever had. The flavors are bold and
-                                            unforgettable!”</p>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Slide 2 -->
-                            <div class="carousel-slide">
-                                <div
-                                    class="card card-border hover:border-primary transition-border h-full shadow-none duration-300">
-                                    <!-- Star Rating -->
-                                    <div class="card-body gap-5">
-                                        <!-- User Info -->
-                                        <div class="flex items-center gap-3">
-                                            <div class="avatar">
-                                                <div class="size-10 rounded-full">
-                                                    <img src="../assets/img/avatars/2.png" alt="Craig Bator" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h4 class="text-base-content font-medium">Lindsey Saris</h4>
-                                                <p class="text-base-content/80 text-sm">Travel Chef Reviewer</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex gap-1">
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span
-                                                class="icon-[tabler--star-half-filled] text-warning size-6 shrink-0"></span>
-                                        </div>
-                                        <!-- Content -->
-                                        <p class="text-base-content/80">“Takahiro’s sushi is pure perfection. So
-                                            fresh, delicate, and beautifully presented — a five-star experience.”
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Slide 3 -->
-                            <div class="carousel-slide">
-                                <div
-                                    class="card card-border hover:border-primary transition-border h-full shadow-none duration-300">
-                                    <!-- Star Rating -->
-                                    <div class="card-body gap-5">
-                                        <!-- User Info -->
-                                        <div class="flex items-center gap-3">
-                                            <div class="avatar">
-                                                <div class="size-10 rounded-full">
-                                                    <img src="../assets/img/avatars/3.png" alt="Alexandra Lee" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h4 class="text-base-content font-medium">Alexandra Lee</h4>
-                                                <p class="text-base-content/80 text-sm">Master Chief Judge</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex gap-1">
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                        </div>
-                                        <!-- Content -->
-                                        <p class="text-base-content/80">The ambiance is amazing, and the food is
-                                            even better! The grilled salmon was perfectly cooked. A must-try place!
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Slide 4 -->
-                            <div class="carousel-slide">
-                                <div
-                                    class="card card-border hover:border-primary transition-border h-full shadow-none duration-300">
-                                    <!-- Star Rating -->
-                                    <div class="card-body gap-5">
-                                        <!-- User Info -->
-                                        <div class="flex items-center gap-3">
-                                            <div class="avatar">
-                                                <div class="size-10 rounded-full">
-                                                    <img src="../assets/img/avatars/12.png" alt="Jason Wu" />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <h4 class="text-base-content font-medium">Jason Wu</h4>
-                                                <p class="text-base-content/80 text-sm">Food Blogger</p>
-                                            </div>
-                                        </div>
-                                        <div class="flex gap-1">
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                            <span class="icon-[tabler--star-filled] text-warning size-6 shrink-0"></span>
-                                        </div>
-                                        <!-- Content -->
-                                        <p class="text-base-content/80">The service was exceptional. From the
-                                            moment we walked in, the staff made us feel like family.</p>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- CTA Section -->
-        <div class="bg-base-100 py-8 sm:py-16 lg:py-24">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="from-primary/30 to-error/30 p-px overflow-hidden rounded-3xl bg-linear-to-r">
-                    <div class="bg-base-100 rounded-3xl p-0.5">
-                        <div class="from-primary/6 to-error/6 relative rounded-3xl bg-linear-to-r to-50% p-8 lg:p-16">
-                            <div
-                                class="flex justify-between gap-8 max-md:flex-col max-sm:items-center max-sm:text-center md:items-center">
-                                <div class="max-w-xs space-y-4 lg:max-w-lg">
-                                    <h2 class="text-base-content text-xl font-bold md:text-3xl">Order Now & Satisfy
-                                        Your Cravings</h2>
-                                    <p class="text-base-content/80">Let us bring the flavors you love straight to
-                                        your door. From classic comfort dishes to chef-curated specials, every bite
-                                        is made with care and delivered fresh. Skip the wait — your next favorite
-                                        meal is just a click away.</p>
-                                    <a class="btn btn-gradient btn-primary" href="#">
-                                        Read More
-                                        <span class="icon-[tabler--arrow-right]"></span>
-                                    </a>
-                                </div>
-                                <img src="../assets/img/mint.png" alt="mint"
-                                    class="intersect-once intersect:motion-preset-slide-down-lg intersect:motion-duration-800 intersect:motion-opacity-in-0 intersect:motion-delay-100 absolute end-[21%] top-0 h-20 max-w-sm max-md:hidden" />
-                                <img src="../assets/img/pizza.png" alt="Pizza"
-                                    class="rtl:rotate-y-180 absolute end-0 top-0 h-full max-w-md rounded-br-3xl max-md:hidden" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="via-primary/20 mx-auto h-px w-3/5 bg-linear-to-r from-transparent to-transparent"></div>
-        <!-- Team -->
-        <section id="team">
-            <div class="bg-base-100 py-8 sm:py-16 lg:py-24">
-                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div class="mb-12 text-center sm:mb-16 lg:mb-24">
-                        <h2 class="text-base-content mb-4 text-2xl font-semibold md:text-3xl lg:text-4xl">Get to
-                            Know Our Amazing Team</h2>
-                        <p class="text-base-content/80 text-xl">Meet the Passionate Experts Behind Our Success and
-                            Learn More About Their Roles .</p>
-                    </div>
-
-                    <!-- Team Members -->
-                    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-                        <!-- Team Member 1 -->
-                        <div class="card card-border hover:border-primary h-max shadow-none">
-                            <figure class="bg-base-200 pt-10.5">
-                                <img src="../assets/img/chef-1.png" alt="Cheyenne Workman" class="h-60 w-auto" />
-                            </figure>
-                            <div class="card-body gap-3 p-5">
-                                <h3 class="text-base-content text-lg font-medium">Cheyenne Workman</h3>
-                                <div class="divider"></div>
-                                <div>
-                                    <p class="text-base-content/80 mb-1 font-medium">Head Chef</p>
-                                    <p class="text-base-content/80">A visionary leader driving innovation and
-                                        collaboration.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Team Member 2 -->
-                        <div class="card card-border hover:border-primary h-max shadow-none">
-                            <figure class="bg-base-200 pt-10.5">
-                                <img src="../assets/img/chef-2.png" alt="Corey Rosser" class="h-60 w-auto" />
-                            </figure>
-                            <div class="card-body gap-3 p-5">
-                                <h3 class="text-base-content text-lg font-medium">Corey Rosser</h3>
-                                <div class="divider"></div>
-                                <div>
-                                    <p class="text-base-content/80 mb-1 font-medium">Kitchen Manager</p>
-                                    <p class="text-base-content/80">Leading teams to build smart, scalable
-                                        solutions.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Team Member 3 -->
-                        <div class="card card-border hover:border-primary h-max shadow-none">
-                            <figure class="bg-base-200 pt-10.5">
-                                <img src="../assets/img/chef-3.png" alt="Marilyn Westervelt" class="h-60 w-auto" />
-                            </figure>
-                            <div class="card-body gap-3 p-5">
-                                <h3 class="text-base-content text-lg font-medium">Marilyn Westervelt</h3>
-                                <div class="divider"></div>
-                                <div>
-                                    <p class="text-base-content/80 mb-1 font-medium">Sous Chef</p>
-                                    <p class="text-base-content/80">Crafting intuitive and engaging user
-                                        experiences.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Team Member 4 -->
-                        <div class="card card-border hover:border-primary h-max shadow-none">
-                            <figure class="bg-base-200 pt-10.5">
-                                <img src="../assets/img/chef-4.png" alt="Ryan Passaquindici Arcand"
-                                    class="h-60 w-auto" />
-                            </figure>
-                            <div class="card-body gap-3 p-5">
-                                <h3 class="text-base-content text-lg font-medium">Ryan Passaquindici Arcand</h3>
-                                <div class="divider"></div>
-                                <div>
-                                    <p class="text-base-content/80 mb-1 font-medium">Culinary Director</p>
-                                    <p class="text-base-content/80">Bringing designs to life with seamless
-                                        interfaces.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Contact Us -->
         <section id="contact-us">
             <div class="bg-base-200 py-8 sm:py-16 lg:py-24">
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <!-- Heading Section -->
                     <div class="mb-12 text-center text-white sm:mb-16 lg:mb-24">
-                        <h2 class="text-base-content mb-4 text-2xl font-semibold md:text-3xl lg:text-4xl">Get in
-                            Touch to Reserve Your Table</h2>
+                        <h2 class="text-base-content mb-4 text-2xl font-semibold md:text-3xl lg:text-4xl">Kontak Kami</h2>
                         <p class="text-base-content/80 text-xl">Whether you're planning a casual dinner or a
                             special celebration, we're here to make your experience seamless.</p>
                     </div>
@@ -542,7 +432,7 @@
                         <div class="card-body grid gap-10 lg:grid-cols-7">
                             <!-- Form Section -->
                             <div class="lg:col-span-4">
-                                <h2 class="text-base-content mb-6 text-3xl font-semibold">Book a Table</h2>
+                                <h2 class="text-base-content mb-6 text-3xl font-semibold">Kritik & Saran</h2>
                                 <form class="space-y-6" onsubmit="return false;">
                                     <div class="flex gap-6 max-md:flex-col">
                                         <div class="w-full">
@@ -618,142 +508,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!-- FAQ -->
-        <section id="faqs">
-            <div class="bg-base-100 relative h-full py-8 sm:py-16 lg:py-24">
-                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <span
-                        class="intersect:motion-preset-slide-right intersect:motion-duration-800 intersect:motion-opacity-0 intersect:motion-delay-600 absolute start-[15%]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="102" height="120" viewBox="0 0 102 120"
-                            fill="none">
-                            <g opacity="0.06">
-                                <!-- Badan tanda seru -->
-                                <path
-                                    d="M54 14C60.5 14 66 19.5 66 26V68C66 74.5 60.5 80 54 80C47.5 80 42 74.5 42 68V26C42 19.5 47.5 14 54 14Z"
-                                    fill="var(--color-primary)" fill-opacity="0.5" />
-                                <!-- Titik tanda seru -->
-                                <path
-                                    d="M54 92C59.5228 92 64 96.4772 64 102C64 107.523 59.5228 112 54 112C48.4772 112 44 107.523 44 102C44 96.4772 48.4772 92 54 92Z"
-                                    fill="var(--color-primary)" />
-                            </g>
-                        </svg>
-
-                    </span>
-                    <span
-                        class="intersect:motion-preset-slide-right intersect:motion-duration-800 intersect:motion-opacity-0 intersect:motion-delay-1200 absolute end-[15%] sm:max-md:end-[5%]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="102" height="120" viewBox="0 0 102 120"
-                            fill="none">
-                            <g opacity="0.06">
-                                <!-- Badan tanda seru -->
-                                <path
-                                    d="M54 14C60.5 14 66 19.5 66 26V68C66 74.5 60.5 80 54 80C47.5 80 42 74.5 42 68V26C42 19.5 47.5 14 54 14Z"
-                                    fill="var(--color-primary)" fill-opacity="0.5" />
-                                <!-- Titik tanda seru -->
-                                <path
-                                    d="M54 92C59.5228 92 64 96.4772 64 102C64 107.523 59.5228 112 54 112C48.4772 112 44 107.523 44 102C44 96.4772 48.4772 92 54 92Z"
-                                    fill="var(--color-primary)" />
-                            </g>
-                        </svg>
-
-                    </span>
-                    <!-- FAQ Header -->
-                    <div class="mb-12 space-y-4 text-wrap text-center sm:mb-16 lg:mb-24">
-                        <h2 class="text-base-content text-2xl font-semibold md:text-3xl lg:text-4xl">Berita Terkini</h2>
-                        <p class="text-base-content/80 text-xl">Levarage artificial intelligence algorithms to
-                            provide users with valuable insights</p>
-                    </div>
-                    <!-- Faq stepper -->
-                    <div id="faq-carousel-1"
-                        data-carousel='{ "loadingClasses": "opacity-0",  "slidesQty": { "xs": 1, "md": 2, "lg": 3 } }'
-                        class="relative w-full">
-                        <div class="flex gap-1">
-                            <!-- Previous Slide -->
-                            <button
-                                class="btn btn-circle carousel-prev btn-outline btn-primary hover:bg-primary relative hover:text-white "
-                                disabled="disabled">
-                                <span class="icon-[tabler--arrow-left] size-5.5"></span>
-                            </button>
-                            <div class="carousel rounded-box">
-                                <div class="carousel-body h-full gap-12 opacity-0">
-                                    @foreach ($berita as $b)
-                                        <div class="carousel-slide m-2">
-                                            <div
-                                                class="card card-border hover:border-primary overflow-hidden h-max shadow-none">
-                                                <figure class="relative h-40 overflow-hidden bg-base-200"">
-                                                    @if ($b->gambar)
-                                                        <img src="{{ asset('storage/' . $b->gambar) }}"
-                                                            class="card-img-top">
-                                                    @endif
-                                                </figure>
-                                                <div class="card-body gap-3 p-5">
-                                                    <h3 class="text-base-content text-lg font-medium">{{ $b->judul }}
-                                                    </h3>
-                                                    <p class="text-xs text-base-content/60">
-                                                        {{ \Carbon\Carbon::parse($b->created_at)->translatedFormat('d F Y') }}
-                                                    </p>
-                                                    <div class="divider"></div>
-                                                    <div>
-                                                        <p class="text-base-content/80 mb-1 font-medium">Head Chef</p>
-                                                        <p class="line-clamp-3 text-base-content/80">
-                                                            {{ Str::limit(strip_tags($b->isi), 100) }}.</p>
-                                                    </div>
-                                                </div>
-                                                <a href="{{ route('berita.show', $b->slug) }}"
-                                                    class="btn btn-sm btn-outline btn-primary w-full">
-                                                    Baca selengkapnya
-                                                </a>
-
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <!-- Next Slide -->
-                            <button
-                                class="btn btn-circle carousel-next btn-primary btn-outline hover:bg-primary relative hover:text-white ">
-                                <span class="icon-[tabler--arrow-right] size-5.5"></span>
-                            </button>
-                        </div>
-                    </div>
-                    <span
-                        class="intersect:motion-preset-slide-right intersect:motion-duration-800 intersect:motion-opacity-0 intersect:motion-delay-900 absolute start-[25%]">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="118" height="119" viewBox="0 0 118 119"
-                            fill="none">
-                            <g opacity="0.05">
-                                <path
-                                    d="M36.4391 42.706C36.2091 42.1358 33.0723 19.7058 60.7168 12.1988C79.3118 7.1492 100.433 13.8137 106.922 29.8927C111.431 41.0682 105.143 50.3678 95.1291 58.2748C91.6043 61.1299 92.769 64.3566 94.2875 68.1195L96.8646 74.5057L76.4101 80.0602L71.3941 67.6302C69.3693 62.6128 67.9605 58.4399 72.2047 53.6183C77.9718 47.1176 84.8999 44.8567 81.6326 36.7601C79.4237 31.2864 73.3964 28.6212 67.8178 30.1361C58.8925 32.5598 57.3147 40.5801 57.9297 45.854L36.4391 42.706ZM108.7 92.9284C111.6 100.113 107.624 107.645 99.6907 109.799C91.8806 111.92 83.2115 107.821 80.3124 100.637C77.3672 93.339 81.3425 85.8064 89.1526 83.6856C97.0862 81.5312 105.755 85.6303 108.7 92.9284Z"
-                                    fill="var(--color-primary)" fill-opacity="0.5" />
-                                <path d="M95.8779 81.1625L88.4385 83.2969L98.2235 108.915L105.663 106.78L95.8779 81.1625Z"
-                                    fill="var(--color-primary)" fill-opacity="0.5" />
-                                <path
-                                    d="M43.8796 40.5732C43.6495 40.003 40.5127 17.573 68.1572 10.066C86.7523 5.01639 107.874 11.6809 114.362 27.7599C118.872 38.9354 112.583 48.235 102.569 56.1421C99.0444 58.9972 100.209 62.2239 101.728 65.9868L104.305 72.3729L83.8502 77.9275L78.8342 65.4975C76.8094 60.48 75.4007 56.3072 79.6448 51.4856C85.412 44.9848 92.3401 42.724 89.0727 34.6274C86.8639 29.1537 80.8365 26.4884 75.2579 28.0033C66.3327 30.427 64.7548 38.4474 65.3699 43.7212L43.8796 40.5732ZM116.141 90.7956C119.04 97.98 115.064 105.512 107.131 107.667C99.3207 109.788 90.6516 105.689 87.7525 98.5046C84.8073 91.2062 88.7826 83.6737 96.5927 81.5528C104.527 79.3983 113.196 83.4976 116.141 90.7956Z"
-                                    fill="var(--color-primary)" />
-                                <path d="M35.8188 44.1504L43.2582 42.0161L65.2665 44.5151L57.8274 46.6493L35.8188 44.1504Z"
-                                    fill="var(--color-primary)" fill-opacity="0.4" />
-                            </g>
-                        </svg>
-                    </span>
-                    <span
-                        class="intersect:motion-preset-slide-right intersect:motion-duration-800 intersect:motion-opacity-0 intersect:motion-delay-1500 absolute end-[35%] max-sm:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="116" height="150" viewBox="0 0 116 150"
-                            fill="none">
-                            <g opacity="0.08">
-                                <path
-                                    d="M16.9554 30.3465C17.0827 29.5437 28.4181 0.863619 62.9102 5.34236C86.1113 8.35499 104.343 26.7815 100.753 49.421C98.258 65.1563 85.4391 73.3239 69.547 77.9789C63.906 79.7044 63.0386 84.1802 62.1985 89.4785L60.7728 98.4703L35.2516 95.1564L38.0267 77.6548C39.1468 70.5902 40.3728 64.8497 48.0714 61.0976C58.4992 56.0608 67.392 56.724 69.1996 45.3239C70.4216 37.6168 65.719 31.4347 58.7586 30.5309C47.6225 29.0849 40.6813 38.0158 37.885 44.6991L16.9554 30.3465ZM61.3688 126.569C59.7648 136.685 50.5783 143.849 40.6794 142.564C30.9348 141.298 24.3449 132.085 25.9488 121.97C27.5782 111.694 36.7648 104.529 46.5095 105.795C56.4083 107.08 62.9981 116.293 61.3688 126.569Z"
-                                    fill="var(--color-primary)" fill-opacity="0.5" />
-                                <path d="M56.1439 106.729L46.9902 105.416L41.7716 141.786L50.9253 143.1L56.1439 106.729Z"
-                                    fill="var(--color-primary)" fill-opacity="0.5" />
-                                <path
-                                    d="M26.1092 31.661C26.2365 30.8582 37.5719 2.17807 72.064 6.65682C95.2651 9.66945 113.496 28.096 109.907 50.7355C107.412 66.4707 94.5929 74.6383 78.7005 79.2933C73.0594 81.0188 72.192 85.4946 71.3519 90.7929L69.9262 99.7847L44.4051 96.4708L47.1801 78.9692C48.3003 71.9046 49.5263 66.1641 57.2249 62.412C67.6526 57.3752 76.5455 58.0384 78.3531 46.6383C79.5751 38.9312 74.8724 32.7491 67.912 31.8453C56.776 30.3993 49.8347 39.3302 47.0384 46.0135L26.1092 31.661ZM70.5222 127.884C68.9183 137.999 59.7317 145.163 49.8329 143.878C40.0882 142.613 33.4984 133.4 35.1022 123.284C36.7316 113.008 45.9182 105.844 55.6629 107.109C65.5621 108.395 72.1515 117.608 70.5222 127.884Z"
-                                    fill="var(--color-primary)" />
-                                <path d="M15.1777 30.0176L24.3314 31.331L46.0603 45.9576L36.907 44.6442L15.1777 30.0176Z"
-                                    fill="var(--color-primary)" fill-opacity="0.4" />
-                            </g>
-                        </svg>
-                    </span>
                 </div>
             </div>
         </section>

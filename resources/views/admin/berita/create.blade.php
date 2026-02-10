@@ -5,7 +5,7 @@
         <main class="mx-auto w-full max-w-7xl flex-1 p-4 sm:p-6 lg:p-8">
             <div class="mb-6 flex items-center gap-2">
                 <span class="icon-[tabler--user-plus] size-6 text-primary"></span>
-                <h1 class="text-xl font-semibold">Tambah Guru</h1>
+                <h1 class="text-xl font-semibold">Tambah Berita</h1>
             </div>
             <div class="rounded-box bg-base-100 shadow-md">
                 <form action="{{ route('admin.berita.store') }}" method="POST" enctype="multipart/form-data"

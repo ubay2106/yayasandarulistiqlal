@@ -91,9 +91,7 @@
                 'admin.mapel.*',
                 'admin.pengajar.*',
             );
-            $penilaianActive = request()->routeIs(
-                'guru.nilai.*',
-            );
+            $penilaianActive = request()->routeIs('guru.nilai.*');
         @endphp
 
         <!-- ---------- HEADER ---------- -->
@@ -259,10 +257,19 @@
                                 </li>
                                 <li>
                                     <a href="{{ route('admin.berita.index') }}"
-                                        class="inline-flex w-full items-center p-2 text-sm font-normal hover:bg-neutral/10 {{ request()->routeIs('admin.berita.index') ? 'menu-active' : '' }}">
-                                        <span class="icon-[tabler--dashboard] size-4.5"></span>
+                                        class="inline-flex w-full items-center gap-2 p-2 text-sm font-normal hover:bg-neutral/10 {{ request()->routeIs('admin.berita.*') ? 'menu-active' : '' }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                                            <rect x="6" y="7" width="4" height="4"></rect>
+                                            <path d="M12 8h6"></path>
+                                            <path d="M12 12h6"></path>
+                                            <path d="M6 14h12"></path>
+                                        </svg>
                                         <span class="ms-2 grow">Berita</span>
                                     </a>
+
                                 </li>
                                 <li class="accordion-item" id="">
                                     <button
@@ -278,7 +285,7 @@
                                             <path d="M14 11h3" />
                                             <path d="M14 15h3" />
                                         </svg>
-                                        <span class="grow">Data Master</span>
+                                        <span class="ms-2 grow">Data Master</span>
                                         <span
                                             class="icon-[tabler--chevron-right] accordion-item-active:rotate-90 size-4.5 shrink-0 transition-transform duration-300 rtl:rotate-180"></span>
                                     </button>
@@ -346,7 +353,7 @@
                                         class="accordion-toggle accordion-item-active:bg-neutral/10 inline-flex w-full items-center p-2 text-start text-sm font-normal"
                                         aria-controls="account-settings-collapse-account-settings" aria-expanded="true">
                                         <span class="icon-[tabler--settings] size-4.5"></span>
-                                        <span class="grow">Account Setting</span>
+                                        <span class="ms-2 grow">Account Setting</span>
                                         <span
                                             class="icon-[tabler--chevron-right] accordion-item-active:rotate-90 size-4.5 shrink-0 transition-transform duration-300 rtl:rotate-180"></span>
                                     </button>
@@ -381,7 +388,7 @@
                                         class="accordion-toggle inline-flex w-full items-center p-2 text-start text-sm font-normal"
                                         aria-expanded="true">
                                         <span class="icon-[tabler--chart-bar] size-4.5"></span>
-                                        <span class="grow">Penilaian</span>
+                                        <span class="ms-2 grow">Penilaian</span>
                                         <span
                                             class="icon-[tabler--chevron-right] accordion-item-active:rotate-90 size-4.5 shrink-0 transition-transform duration-300 rtl:rotate-180"></span>
                                     </button>
