@@ -12,7 +12,7 @@ return new class extends Migration {
             // hapus foreign key lama
             $table->dropForeign(['wali_kelas_id']);
 
-            // tambah foreign key baru (RESTRICT)
+            
             $table->foreign('wali_kelas_id')
                   ->references('id')
                   ->on('kelas')

@@ -11,8 +11,8 @@
                         <span>
                             Yayasan Darul Istiqlal
                         </span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="348" height="10" viewBox="0 0 348 10"
-                            fill="none" class="-z-1 left-25 absolute -bottom-1.5 max-lg:left-4 max-md:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="348" height="10" viewBox="0 0 348 10" fill="none"
+                            class="-z-1 left-25 absolute -bottom-1.5 max-lg:left-4 max-md:hidden">
                             <path
                                 d="M1.85645 8.23715C62.4821 3.49284 119.04 1.88864 180.031 1.88864C225.103 1.88864 275.146 1.32978 319.673 4.85546C328.6 5.24983 336.734 6.33887 346.695 7.60269"
                                 stroke="url(#paint0_linear_17052_181397)" stroke-width="2" stroke-linecap="round" />
@@ -25,9 +25,10 @@
                             </defs>
                         </svg>
                     </h1>
-                    <p class="text-base-content/80 max-w-3xl">Yayasan Darul Istiqlal Madrasah Darussalam merupakan lembaga
-                        dakwah berbasis pendidikan. Lebih dari setengah abad, Yayasan ini telah mempresentasikan sistem
-                        sekolah sehari penuh sebagai terobosan pendidikan bagi Indonesia</p>
+                    <p class="text-base-content/80 max-w-3xl">Yayasan Darul Istiqlal berkomitmen menghadirkan pendidikan
+                        yang holistik menggabungkan nilai-nilai
+                        keimanan, akhlak mulia, kecerdasan intelektual, serta keterampilan hidup. Kami percaya setiap anak
+                        memiliki potensi luar biasa yang perlu dibimbing dengan penuh cinta dan keteladanan.</p>
                 </div>
                 <img src="{{ asset('assets/img/smp.png') }}" alt="Dishes" class="min-h-67 w-full object-cover" />
             </div>
@@ -40,9 +41,9 @@
                         <div class="space-y-4 text-center">
                             <h2 class="text-base-content text-2xl font-semibold md:text-3xl lg:text-4xl">Tentang Kami
                             </h2>
-                            <p class="text-base-content/80 text-xl">Our achievement story stands as a powerful
-                                testament to teamwork and perseverance. United, we have faced challenges, celebrated
-                                victories, and woven a narrative of growth and success.</p>
+                            <p class="text-base-content/80 text-xl">Yayasan Darul Istiqlal merupakan lembaga pendidikan yang
+                                berdedikasi dalam membina dan mendidik generasi muda agar tumbuh menjadi pribadi yang
+                                bertaqwa, berakhlakul karimah, cerdas, serta terampil.</p>
                             <a href="#" class="btn btn-primary btn-lg btn-gradient">
                                 Read More
                                 <span class="icon-[tabler--arrow-right] size-5 rtl:rotate-180"></span>
@@ -51,7 +52,7 @@
                         <!-- Video player and stats -->
                         <div
                             class="lg:h-161 relative mb-8 h-full w-full rounded-xl max-lg:space-y-6 sm:mb-24 lg:mb-32 pb-28 lg:pb-36">
-                            <img src="../assets/img/restaurant-about-us.png" alt="about-us"
+                            <img src="{{ asset('/assets/img/guruku.jpg') }}" alt="about-us"
                                 class="h-full w-full rounded-xl object-cover" />
                             <!-- Stats card overlapping the video section -->
                             <div
@@ -59,7 +60,7 @@
 
                                 <!-- Visi -->
                                 <div class="flex flex-col items-center justify-center gap-4 text-center">
-                                    <h3 class="text-lg font-semibold text-base-content">Visi</h3>
+                                    <h3 class="text-primary text-lg font-bold text-base-content">VISI</h3>
                                     <p class="text-base-content/80 leading-relaxed max-w-xl">
                                         Terciptanya anak didik yang
                                         <span class="font-medium text-base-content">
@@ -69,7 +70,7 @@
                                 </div>
                                 <!-- Misi -->
                                 <div class="flex flex-col items-center justify-center gap-4 text-center">
-                                    <h3 class="text-lg font-semibold text-base-content">Misi</h3>
+                                    <h3 class="text-success text-lg font-bold text-base-content">MISI</h3>
                                     <ol
                                         class="list-decimal list-inside space-y-2 text-base-content/80 leading-relaxed max-w-xl">
                                         <li>
@@ -354,7 +355,8 @@
                                                 class="icon-[tabler--message-circle-2] text-base-content/80 mx-4 mt-2 size-6 shrink-0"></span>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-gradient w-full">Send Your Message</button>
+                                    <button type="submit" class="btn btn-primary btn-gradient w-full">Send Your
+                                        Message</button>
                                 </form>
                             </div>
                             <!-- Contact Information -->

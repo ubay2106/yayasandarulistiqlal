@@ -17,7 +17,7 @@
                                 </h2>
                                 
                                 {{-- Logo - Mobile Only --}}
-                                <img src="../assets/img/logo.png" 
+                                <img src="{{ asset('assets/img/ra.png') }}" 
                                      alt="Logo RA Darussalam"
                                      class="w-full max-w-[200px] mx-auto rounded-lg md:hidden" />
                                 
@@ -28,8 +28,7 @@
                                 </p>
                             </div>
                             
-                            {{-- Logo - Desktop Only --}}
-                            <img src="../assets/img/logo.png" 
+                            <img src="{{ asset('assets/img/ra.png') }}" 
                                  alt="Logo RA Darussalam"
                                  class="intersect-once intersect:motion-preset-slide-down-lg intersect:motion-duration-800 
                                         intersect:motion-opacity-in-0 intersect:motion-delay-100 
@@ -56,47 +55,30 @@
                  data-delay="100">
                 <div class="bg-base-100 rounded-xl shadow-lg border border-base-300 overflow-hidden">
                     <div class="flex items-center gap-6 p-6 lg:p-8 max-md:flex-col">
-                        
-                        {{-- Visi Label --}}
                         <div class="flex-shrink-0">
                             <h3 class="text-primary text-3xl lg:text-4xl font-bold">
                                 VISI
                             </h3>
                         </div>
-                        
-                        {{-- Visi Content --}}
                         <div class="flex-1 px-4">
                             <p class="text-base-content/80 text-sm lg:text-base">
                                 Terwujudnya peserta didik berakhlak karimah, berprestasi optimal, dan berjiwa kompetitif
                                 di tingkat global
                             </p>
                         </div>
-
-                        {{-- Visi Image --}}
-                        <div class="flex-shrink-0 max-md:w-full max-md:max-w-[200px] pr-4">
-                            <img src="../assets/img/visi-image.png" 
-                                 alt="Visi RA Darussalam"
-                                 class="w-32 lg:w-40 max-md:mx-auto" />
-                        </div>
                     </div>
                 </div>
             </div>
-            
-            {{-- Misi Card --}}
             <div class="px-4 sm:px-6 lg:px-8
                         hero-animate opacity-0 translate-y-10 transition-all duration-700 ease-out" 
                  data-delay="300">
                 <div class="bg-base-100 rounded-xl shadow-lg border border-base-300 overflow-hidden">
                     <div class="flex items-center gap-6 p-6 lg:p-8 max-md:flex-col">
-                        
-                        {{-- Misi Label --}}
                         <div class="flex-shrink-0">
                             <h3 class="text-success text-3xl lg:text-4xl font-bold">
                                 MISI
                             </h3>
                         </div>
-                        
-                        {{-- Misi Content --}}
                         <div class="flex-1 px-4">
                             <p class="text-base-content/80 text-sm lg:text-base">
                                 Melaksanakan proses pendidikan yang dapat menumbuhkembangkan peserta didik berakhlak
@@ -104,13 +86,6 @@
                                 optimal. Melaksanakan proses pendidikan yang dapat mewujudkan peserta didik berjiwa
                                 kompetitif di tingkat global
                             </p>
-                        </div>
-                        
-                        {{-- Misi Image --}}
-                        <div class="flex-shrink-0 max-md:w-full max-md:max-w-[200px] pr-4">
-                            <img src="../assets/img/misi-image.png" 
-                                 alt="Misi RA Darussalam"
-                                 class="w-32 lg:w-40 max-md:mx-auto" />
                         </div>
                     </div>
                 </div>

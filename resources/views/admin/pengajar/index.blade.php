@@ -54,15 +54,18 @@
                                     <td>{{ $p->kelas->nama_kelas }}</td>
                                     <td class="text-right space-x-2">
                                         <a href="{{ route('admin.pengajar.edit', $p->id) }}"
-                                            class="btn btn-circle btn-text btn-sm tooltip" data-tip="Edit Pengajar">
+                                            class="btn btn-circle btn-text btn-sm tooltip mt-2" data-tip="Edit Pengajar">
                                             <span class="icon-[tabler--pencil] size-5"></span>
                                         </a>
-                                        <form action="{{ route('admin.pengajar.destroy', $p->id) }}" method="POST"
-                                            class="inline">
-                                            @csrf @method('DELETE')
-                                            <button type="submit" class="btn btn-circle btn-text btn-sm"><span
-                                                    class="icon-[tabler--trash] size-5"></span></button>
-                                        </form>
+                                        <form id="delete-form-{{ $p->id }}"
+                                                action="{{ route('admin.pengajar.destroy', $p->id) }}" method="POST"
+                                                style="display:inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="button" onclick="hapus({{ $p->id }})"
+                                                    class="btn btn-circle btn-text btn-sm" aria-label="Action button"><span
+                                                        class="icon-[tabler--trash] size-5"></span></button>
+                                            </form>
 
                                     </td>
                                 </tr>
@@ -78,4 +81,38 @@
             @endif
         </main>
     </div>
+    <script>
+        function hapus(id) {
+            Swal.fire({
+                title: 'Yakin?',
+                text: 'Data guru akan dihapus!',
+                icon: 'warning',
+
+                width: '80%', // mobile friendly
+                padding: '1.25rem',
+                heightAuto: false,
+
+                showCancelButton: true,
+                confirmButtonText: 'Ya, hapus',
+                cancelButtonText: 'Batal',
+
+                buttonsStyling: true,
+                confirmButtonColor: '#dc2626',
+                cancelButtonColor: '#6b7280',
+
+                focusCancel: true,
+
+                showClass: {
+                    popup: 'swal2-show'
+                },
+                hideClass: {
+                    popup: 'swal2-hide'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + id).submit();
+                }
+            });
+        }
+    </script>
 @endsection

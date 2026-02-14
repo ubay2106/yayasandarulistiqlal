@@ -201,10 +201,7 @@
                 </nav>
             </div>
         </div>
-
         <!-- ---------- END HEADER ---------- -->
-
-        <!-- Layout Menu -->
 
         <!-- Menu -->
         <aside id="layout-sidebar"
@@ -247,7 +244,6 @@
                     <div class="h-full overflow-y-auto">
                         @role('admin')
                             <ul class="accordion menu menu-sm gap-1 p-3">
-                                <!-- Accordion Menu Item (Level 0) -->
                                 <li>
                                     <a href="{{ route('admin.dashboard') }}"
                                         class="inline-flex w-full items-center p-2 text-sm font-normal hover:bg-neutral/10 {{ request()->routeIs('admin.dashboard') ? 'menu-active' : '' }}">
@@ -306,7 +302,6 @@
                                         class="accordion-content mt-1 w-full overflow-hidden transition-[height] duration-300 {{ $dataMasterActive ? '' : 'hidden' }}"
                                         aria-labelledby="" role="region">
                                         <ul class="space-y-1">
-                                            <!-- Simple Link Item (for nested items) -->
                                             <li>
                                                 <a href="{{ route('admin.siswa.index') }}"
                                                     class="inline-flex w-full items-center px-2 {{ request()->routeIs('admin.siswa.*') ? 'menu-active' : '' }}">
@@ -314,7 +309,6 @@
                                                 </a>
                                             </li>
 
-                                            <!-- Simple Link Item (for nested items) -->
                                             <li>
                                                 <a href="{{ route('admin.guru.index') }}"
                                                     class="inline-flex w-full items-center px-2 {{ request()->routeIs('admin.guru.*') ? 'menu-active' : '' }}">
@@ -322,7 +316,6 @@
                                                 </a>
                                             </li>
 
-                                            <!-- Simple Link Item (for nested items) -->
                                             <li>
                                                 <a href="{{ route('admin.kelas.index') }}"
                                                     class="inline-flex w-full items-center px-2 {{ request()->routeIs('admin.kelas.*') ? 'menu-active' : '' }}">
@@ -364,7 +357,6 @@
 
                         @role('guru')
                             <ul class="accordion menu menu-sm gap-1 p-3">
-                                <!-- Accordion Menu Item (Level 0) -->
                                 <li>
                                     <a href="{{ route('guru.dashboard') }}"
                                         class="inline-flex w-full items-center p-2 text-sm font-normal hover:bg-neutral/10 {{ request()->routeIs('guru.dashboard') ? 'menu-active' : '' }}">
@@ -392,8 +384,6 @@
                                                     <span>Input Nilai</span>
                                                 </a>
                                             </li>
-
-                                            <!-- Simple Link Item (for nested items) -->
                                             <li>
                                                 <a href="{{ route('guru.nilai.rekap') }}"
                                                     class="inline-flex w-full items-center px-2 {{ request()->routeIs('guru.nilai.rekap') ? 'menu-active' : '' }}">
@@ -409,14 +399,10 @@
                 </div>
             </div>
         </aside>
-        <!-- / Menu -->
 
-        <!-- Layout Container -->
         @yield('content')
-        <!-- / Layout Container -->
 
     </div>
-    <!-- / Layout Wrapper -->
 
     <!-- Vendors JS -->
     <script src="{{ asset('asset/dist/libs/apexcharts/dist/apexcharts.min.js') }}"></script>

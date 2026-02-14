@@ -6,8 +6,7 @@
                 <!-- Section Header -->
                 <div class="mb-12 space-y-4 text-center sm:mb-16 lg:mb-24">
                     <h2 class="text-base-content text-2xl font-semibold md:text-3xl lg:text-4xl">Berita Kami</h2>
-                    <p class="text-base-content/80 text-xl">Menyinari Bakat dan Prestasi Siswa Kami, Melihat Karya
-                        Hebat yang Mencerminkan Potensi Terbesar Generasi Masa Depan.</p>
+                    <p class="text-base-content/80 text-xl">Berbagai Informasi Menarik seputar Pendidikan, Inovasi, dan Perkembangan Terbaru di Sekolah Kami.</p>
                 </div>
                 <!-- Blog Grid -->
                 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

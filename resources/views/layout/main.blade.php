@@ -259,17 +259,12 @@
         window.addEventListener('load', offsetContentByHeader);
         window.addEventListener('resize', offsetContentByHeader);
 
-        // kalau navbar collapse terbuka/tutup
         document.addEventListener('click', function(e) {
             if (e.target.closest('[data-collapse]')) {
                 setTimeout(offsetContentByHeader, 300);
             }
         });
     </script>
-
-    <button id="scrollToTopBtn"
-        class="btn btn-circle btn-soft btn-secondary/20 bottom-15 end-15 motion-preset-slide-right motion-duration-800 motion-delay-100 absolute z-3 hidden"
-        aria-label="Circle Soft Icon Button"><span class="icon-[tabler--chevron-up] size-5 shrink-0"></span></button>
 </body>
 
 </html>

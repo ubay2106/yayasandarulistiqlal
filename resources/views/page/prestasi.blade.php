@@ -4,9 +4,9 @@
     <div class="bg-base-100 py-8 sm:py-16 lg:py-10">
         <div class="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
             <div class="mb-8 text-center">
-                <h1 class="text-2xl sm:text-3xl font-bold">Semua Prestasi</h1>
+                <h1 class="text-2xl sm:text-3xl font-bold">Galeri Karya dan Prestasi Siswa</h1>
                 <p class="text-base-content/70 mt-2">
-                    Kumpulan prestasi siswa dan sekolah kami
+                    Menyinari Bakat dan Prestasi Siswa Kami, Melihat Karya Hebat yang Mencerminkan Potensi Terbesar Generasi Masa Depan.
                 </p>
             </div>
 
