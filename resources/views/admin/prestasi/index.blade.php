@@ -4,28 +4,21 @@
         <div class="w-full px-6 mt-10">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="size-5 shrink-0" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="4" width="18" height="16" rx="2"></rect>
-                        <rect x="6" y="7" width="4" height="4"></rect>
-                        <path d="M12 8h6"></path>
-                        <path d="M12 12h6"></path>
-                        <path d="M6 14h12"></path>
-                    </svg>
-                    <h1 class="text-lg font-semibold">Berita</h1>
+                    <span class="icon-[tabler--users] size-5"></span>
+                    <h1 class="text-lg font-semibold">Prestasi</h1>
                 </div>
             </div>
         </div>
         <main class="mx-auto w-full max-w-[1280px] flex-1 grow space-y-6 p-6">
             <div class="rounded-box shadow-base-300/10 bg-base-100 w-full pb-2 shadow-md">
                 <div class="flex items-center justify-between px-6 py-4">
-                    <a href="{{ route('admin.berita.create') }}"
+                    <a href="{{ route('admin.prestasi.create') }}"
                         class="btn btn-sm btn-primary inline-flex items-center gap-2">
                         <span class="icon-[tabler--plus] size-4"></span>
-                        Tambah Berita
+                        Tambah Prestasi
                     </a>
                 </div>
-                @if ($berita->isNotEmpty())
+                @if ($prestasi->isNotEmpty())
                     <div class="overflow-x-auto">
                         <table class="table">
                             <thead>
@@ -37,29 +30,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($berita as $b)
+                                @foreach ($prestasi as $p)
                                     <tr>
-                                        <td>{{ $b->judul }}</td>
-                                        <td><span
-                                                class="badge {{ $b->status === 'publish' ? 'badge-success' : 'badge-ghost' }}">{{ $b->status }}
+                                        <td>{{ $p->judul }}</td>
+                                        <td>
+                                            <span
+                                                class="badge {{ $p->status === 'publish' ? 'badge-success' : 'badge-ghost' }}">
+                                                {{ $p->status }}
                                             </span>
                                         </td>
-                                        <td>{{ $b->created_at->format('d-m-Y') }}</td>
+                                        <td>{{ $p->tanggal ? \Carbon\Carbon::parse($p->tanggal)->format('d-m-Y') : '-' }}
+                                        </td>
                                         <td class="flex gap-1">
-                                            <a href="{{ route('admin.berita.edit', $b->id) }}"
+                                            <a href="{{ route('admin.prestasi.edit', $p->id) }}"
                                                 class="btn btn-circle btn-text btn-sm" title="Edit">
                                                 <span class="icon-[tabler--pencil] size-5"></span>
                                             </a>
 
-                                            <form action="{{ route('admin.berita.destroy', $b->id) }}" method="POST"
-                                                id="delete-form-{{ $b->id }}">
+                                            <form action="{{ route('admin.prestasi.destroy', $p->id) }}" method="POST"
+                                                id="delete-form-{{ $p->id }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="button" onclick="hapus({{ $b->id }})"
-                                                    class="btn btn-circle btn-text btn-sm" title="Hapus">
+                                                <button type="button" onclick="hapus({{ $p->id }})"
+                                                    class="btn btn-circle btn-text btn-sm">
                                                     <span class="icon-[tabler--trash] size-5"></span>
                                                 </button>
-
                                             </form>
                                         </td>
 
@@ -71,7 +66,7 @@
                 @else
                     <div class="flex flex-col items-center justify-center py-16 text-base-content/60">
                         <span class="icon-[tabler--users-off] size-12 mb-3"></span>
-                        <p class="text-sm mb-4">Belum ada Berita</p>
+                        <p class="text-sm mb-4">Belum ada Prestasi</p>
                     </div>
                 @endif
             </div>
@@ -84,7 +79,7 @@
                 text: 'Data guru akan dihapus!',
                 icon: 'warning',
 
-                width: '80%',
+                width: '80%', // mobile friendly
                 padding: '1.25rem',
                 heightAuto: false,
 

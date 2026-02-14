@@ -58,7 +58,7 @@ class DashboardController extends Controller
         return view('guru.dashboard', [
             'guru' => $guru,
             'grafik' => $grafik,
-            'pengajar' => $pengajar, // ⬅️ penting untuk filter
+            'pengajar' => $pengajar,
             'siswaCount' => Siswa::whereIn('kelas_id', $kelasIds)->count(),
             'kelasCount' => $kelasIds->count(),
             'mapelCount' => $mapelIds->count(),

@@ -8,7 +8,7 @@
                     <figure class="p-2 sm:p-4">
                         <div class="relative overflow-hidden rounded-2xl">
                             <img src="{{ asset('storage/' . $berita->gambar) }}"
-                                class="h-[280px] w-full object-cover transition-transform duration-300 hover:scale-105"
+                                class="h-[280px] w-full rounded-xl object-cover transition-transform duration-300 hover:scale-105"
                                 alt="{{ $berita->judul }}">
                         </div>
                     </figure>
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="pt-4">
-                        <a href="{{ url('/') }}" class="btn btn-sm btn-ghost gap-2">
+                        <a href="{{ url()->previous() }}" class="btn btn-sm btn-ghost gap-2">
                             <span class="icon-[tabler--arrow-left] size-4"></span>
                             Kembali
                         </a>

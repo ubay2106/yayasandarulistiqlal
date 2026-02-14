@@ -271,6 +271,19 @@
                                     </a>
 
                                 </li>
+                                <li>
+                                    <a href="{{ route('admin.prestasi.index') }}"
+                                        class="inline-flex w-full items-center gap-2 p-2 text-sm font-normal hover:bg-neutral/10 {{ request()->routeIs('admin.prestasi.*') ? 'menu-active' : '' }}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            class="size-5">
+                                            <path
+                                                d="M18 4h2a1 1 0 0 1 1 1c0 3.866-2.239 7-5 7h-.071A6.002 6.002 0 0 1 13 14.91V17h2a1 1 0 1 1 0 2H9a1 1 0 1 1 0-2h2v-2.09A6.002 6.002 0 0 1 8.071 12H8c-2.761 0-5-3.134-5-7a1 1 0 0 1 1-1h2V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1Zm-2 0H8v4a4 4 0 0 0 8 0V4ZM6 6H4.07C4.372 8.307 5.64 10 8 10V8a6.01 6.01 0 0 1-2-2Zm12 0a6.01 6.01 0 0 1-2 2v2c2.36 0 3.628-1.693 3.93-4H18Z" />
+                                        </svg>
+
+                                        <span class="ms-2 grow">Prestasi</span>
+                                    </a>
+
+                                </li>
                                 <li class="accordion-item" id="">
                                     <button
                                         class="accordion-toggle inline-flex w-full items-center p-2 text-start text-sm font-normal"
@@ -345,30 +358,6 @@
                                         </svg>
                                         <span class="ms-2 grow">Data Penilaian</span>
                                     </a>
-                                </li>
-
-                                <!-- Accordion Menu Item (Level 0) -->
-                                <li class="accordion-item" id="account-settings">
-                                    <button
-                                        class="accordion-toggle accordion-item-active:bg-neutral/10 inline-flex w-full items-center p-2 text-start text-sm font-normal"
-                                        aria-controls="account-settings-collapse-account-settings" aria-expanded="true">
-                                        <span class="icon-[tabler--settings] size-4.5"></span>
-                                        <span class="ms-2 grow">Account Setting</span>
-                                        <span
-                                            class="icon-[tabler--chevron-right] accordion-item-active:rotate-90 size-4.5 shrink-0 transition-transform duration-300 rtl:rotate-180"></span>
-                                    </button>
-                                    <div id="account-settings-collapse-account-settings"
-                                        class="accordion-content mt-1 hidden w-full overflow-hidden transition-[height] duration-300"
-                                        aria-labelledby="account-settings" role="region">
-                                        <ul class="space-y-1">
-                                            <!-- Simple Link Item (for nested items) -->
-                                            <li>
-                                                <a href="" class="inline-flex w-full items-center px-2">
-                                                    <span>Account</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </li>
                             </ul>
                         @endrole

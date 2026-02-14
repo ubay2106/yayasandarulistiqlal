@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-
 class BeritaController extends Controller
 {
     public function index()
@@ -55,6 +54,14 @@ class BeritaController extends Controller
 
         return view('page.berita-show', compact('berita'));
     }
+    public function list()
+{
+    $berita = Berita::where('status', 'publish')
+        ->latest()
+        ->paginate(9);
+
+    return view('page.berita-list', compact('berita'));
+}
 
     public function edit($id)
     {

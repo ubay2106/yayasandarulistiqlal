@@ -9,22 +9,29 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\MataPelajaranController;
 use App\Http\Controllers\NilaiController;
+use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PengajarController;
+use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Berita;
 use App\Models\Guru;
+use App\Models\Prestasi;
 
 Route::get('/', function () {
-    $berita = Berita::where('status', 'publish')
-        ->latest()
-        ->get();
-
-    $guru = Guru::latest()->take(6)->get();
-    return view('welcome', compact('berita', 'guru'));
+    $berita = Berita::where('status', 'publish')->latest()->take(4)->get();
+    $prestasi = Prestasi::where('status', 'publish')->latest()->take(3)->get();
+    $guru = Guru::latest()->get();
+    return view('welcome', compact('berita', 'guru', 'prestasi'));
 });
+Route::get('/berita', [BeritaController::class, 'list'])->name('berita.list');
 Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
-Route::get('/guru/{guru}', [GuruController::class, 'show'])->name('page.guru-show');
+Route::get('/prestasi/{prestasi}', [PrestasiController::class, 'show'])->name('prestasi.show');
+Route::get('/prestasi', [PrestasiController::class, 'list'])->name('prestasi.list');
+Route::get('/profil-guru/{guru}', [GuruController::class, 'show'])->name('page.guru-show');
+Route::get('/pendidikan/ra', [PendidikanController::class, 'ra'])->name('pendidikan.ra');
+Route::get('/pendidikan/mi', [PendidikanController::class, 'mi'])->name('pendidikan.mi');
+Route::get('/pendidikan/mts', [PendidikanController::class, 'mts'])->name('pendidikan.mts');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
@@ -42,6 +49,7 @@ Route::middleware(['auth', 'role:admin'])
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('berita', BeritaController::class)->except(['show']);
+        Route::resource('prestasi',PrestasiController::class);
         Route::resource('siswa', SiswaController::class);
         Route::resource('guru', GuruController::class);
         Route::resource('kelas', KelasController::class);

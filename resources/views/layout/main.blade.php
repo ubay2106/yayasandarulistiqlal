@@ -134,7 +134,7 @@
                     <div id="navbar-block-4"
                         class="lg:navbar-center transition-height collapse hidden grow overflow-visible font-medium duration-300 lg:flex">
                         <div class="text-base-content flex gap-6 text-base max-lg:mt-4 max-lg:flex-col lg:items-center">
-                            <a href="#home" class="hover:text-primary nav-link">Home</a>
+                            <a href="{{ url('/') }}" class="hover:text-primary nav-link">Home</a>
                             <details class="relative">
                                 <summary
                                     class="nav-link cursor-pointer flex items-center gap-1 list-none hover:text-primary">
@@ -148,7 +148,7 @@
                                 </summary>
                                 <div
                                     class="mt-2 flex flex-col gap-1 lg:absolute lg:left-0 lg:top-full lg:z-50 lg:min-w-[160px] lg:rounded-lg lg:bg-base-100 lg:shadow-lg lg:mt-2">
-                                    <a href=""
+                                    <a href="{{ route('pendidikan.ra') }}"
                                         class="px-4 py-2 hover:text-primary lg:hover:bg-base-200 rounded whitespace-nowrap">
                                         RA Darussalam
                                     </a>
@@ -162,9 +162,9 @@
                                     </a>
                                 </div>
                             </details>
-                            <a href="#berita" class="hover:text-primary nav-link">Berita</a>
-                            <a href="#" class="hover:text-primary nav-link">Prestasi</a>
-                            <a href="#" class="hover:text-primary nav-link">Galeri</a>
+                            <a href="{{ route('prestasi.list') }}" class="hover:text-primary nav-link">Prestasi</a>
+                            <a href="{{ route('berita.list') }}" class="hover:text-primary nav-link">Berita</a>
+                            <a href="#galeri" class="hover:text-primary nav-link">Galeri</a>
                         </div>
                     </div>
                     <div class="navbar-end max-lg:hidden">
@@ -195,8 +195,10 @@
             </nav>
         </header>
 
-        <div id="page-content">
-            @yield('content')
+        <div id="page-content" class="w-full">
+            <div class="mx-auto w-full max-w-none px-[10vw]">
+                @yield('content')
+            </div>
         </div>
 
         <footer>

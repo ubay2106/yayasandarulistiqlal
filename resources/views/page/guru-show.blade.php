@@ -5,7 +5,6 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-            {{-- KIRI: FOTO + INFO SINGKAT --}}
             <div class="md:col-span-1">
                 <div class="card bg-base-100 shadow-md">
                     <figure class="p-5">
